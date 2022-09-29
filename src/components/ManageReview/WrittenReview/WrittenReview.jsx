@@ -1,8 +1,12 @@
-import ReviewItem from '../../Layout/ReviewItem';
-import reviewData from '../../../db/reviewData.json';
+import { useContext } from 'react';
+import { ReviewContext } from '../../../context/context';
+import ReviewLayout from '../../Layout/ReviewLayout';
 
 const WrittenReview = () => {
-  return reviewData.map((item) => <ReviewItem props={item} key={item.seq} />);
+  const { writtenList } = useContext(ReviewContext);
+  return writtenList.map((item) => (
+    <ReviewLayout props={item} key={item.seq} />
+  ));
 };
 
 export default WrittenReview;

@@ -1,0 +1,27 @@
+.container {
+  margin-top: 2rem;
+  width: 70vw;
+  background: #f5f5f4;
+}
+
+.header {
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+}
+
+.header_title {
+  display: block;
+  border-bottom: solid 1px #737373;
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 1rem;
+  padding-bottom: 0.7rem;
+  text-align: left;
+}
+
+@media screen and (max-width: 48rem) {
+  .header_title {
+    display: none;
+  }
+}

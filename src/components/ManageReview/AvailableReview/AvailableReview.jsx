@@ -1,9 +1,12 @@
-import ReviewItem from '../../Layout/ReviewItem';
-import availableData from '../../../db/availableData.json';
+import { useContext } from 'react';
+import { ReviewContext } from '../../../context/context';
+import ReviewLayout from '../../Layout/ReviewLayout';
 
 const AvailableReview = () => {
-  return availableData.map((item) => (
-    <ReviewItem props={item} key={item.seq} />
+  const { availableList } = useContext(ReviewContext);
+
+  return availableList.map((item) => (
+    <ReviewLayout props={item} key={item.seq} />
   ));
 };
 
