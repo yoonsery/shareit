@@ -1,0 +1,50 @@
+.nav {
+  margin: 1.5rem 1.5rem 0 1.5rem;
+  border-bottom: solid 2px rgba(64, 64, 64, 0.257);
+  color: #d4d4d4;
+}
+
+.nav::after {
+  content: '';
+  position: absolute;
+  display: block;
+  border-bottom: solid 2px #404040;
+  width: calc(100% / 3);
+  /* transform: translateX(98%); */
+}
+
+.list.active {
+  color: #000;
+  cursor: default;
+}
+
+.ul {
+  display: flex;
+  flex-direction: row;
+  font-size: small;
+  justify-content: space-around;
+  padding: 0 0 1rem 0;
+}
+
+.list {
+  cursor: pointer;
+}
+
+@media screen and (min-width: 48rem) {
+  .nav {
+    border-bottom: 0;
+    margin-top: 0;
+  }
+  .nav::after {
+    display: none;
+  }
+  .ul {
+    justify-content: left;
+  }
+  .list {
+    margin: 0;
+  }
+  .available {
+    margin-right: 2.5rem;
+  }
+}
