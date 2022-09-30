@@ -1,26 +1,16 @@
 .main {
   margin-top: 2rem;
   width: 390px;
-  background: #f5f5f4;
+  background: #f5f5f5;
 }
 
 .header {
   position: relative;
-  background: #fafafa;
+  background: #ffffff;
   display: flex;
   flex-direction: column;
   padding: 10px 0;
 }
-
-/* .header_title {
-  display: block;
-  border-bottom: solid 1px #737373;
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin: 1rem 1.5rem;
-  padding-bottom: 0.7rem;
-  text-align: left;
-} */
 
 .line {
   background-color: #d8dee5;
@@ -33,7 +23,7 @@
   bottom: 0%;
 }
 
-.activeLine {
+.left {
   background-color: #232323;
   border: 0;
   height: 2px;
@@ -46,20 +36,15 @@
   transform: translateX(-50%);
 }
 
-/* @media screen and (min-width: 48rem) {
-  .header {
-    padding-top: 1rem;
-  }
-
-  .header_title {
-    display: none;
-  }
-
-  .availableLine {
-    display: none;
-  }
-
-  .writtenLine {
-    display: none;
-  }
-} */
+.right {
+  background-color: #232323;
+  border: 0;
+  height: 2px;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 100%;
+  bottom: 0%;
+  width: 50%;
+  transform: translateX(50%);
+}
