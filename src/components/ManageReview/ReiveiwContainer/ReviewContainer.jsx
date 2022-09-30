@@ -1,6 +1,6 @@
-import styles from './ReviewLayout.module.css';
+import styles from './ReviewContainer.module.css';
 
-const ReviewCard = ({ props: item }) => {
+const ReviewContainer = ({ props: item }) => {
   return (
     <section className={styles.section}>
       <div className={styles.thumbnail}>
@@ -38,4 +38,4 @@ const ReviewCard = ({ props: item }) => {
   );
 };
 
-export default ReviewCard;
+export default ReviewContainer;

@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { ReviewContext } from '../../../context/context';
+import { useSelector } from 'react-redux';
 import styles from './Nav.module.css';
 
 const Nav = ({ available, written }) => {
-  const { availableList } = useContext(ReviewContext);
-  const { writtenList } = useContext(ReviewContext);
+  const availableList = useSelector((state) => state.availableList);
+  const writtenList = useSelector((state) => state.writtenList);
 
   let availableStyles = available
     ? `${styles.list} ${styles.available} ${styles.active}`
