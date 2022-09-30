@@ -12,11 +12,14 @@ const ManageReview = () => {
   return (
     <main className={styles.main}>
       <header className={styles.header}>
-        <h2 className={styles.header_title}>후기 관리</h2>
+        {/* <h2 className={styles.header_title}>후기 관리</h2> */}
         <Nav />
+        <div className={styles.line} />
+        <div className={styles.activeLine} />
       </header>
       {isAvailable && <Available />}
       {isWritten && <Written />}
+      <p>고객님의 이용후기</p>
     </main>
   );
 };

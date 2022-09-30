@@ -1,12 +1,17 @@
 import { useSelector } from 'react-redux';
-
-import ReviewContainer from '../ReiveiwContainer/ReviewContainer';
+import Thumbnail from '../Thumbnail/Thumbnail';
+import Detail from '../Detail/Detail';
+import styles from './Written.module.css';
 
 const Written = () => {
   const writtenList = useSelector((state) => state.writtenList);
 
   return writtenList.map((item) => (
-    <ReviewContainer props={item} key={item.seq} />
+    <section className={styles.section} key={item.seq}>
+      <Thumbnail props={item} />
+      <hr />
+      <Detail props={item} />
+    </section>
   ));
 };
 

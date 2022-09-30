@@ -1,0 +1,13 @@
+.section {
+  background: #fafafa;
+  display: flex;
+  flex-direction: column;
+  /* padding: 1.5rem; */
+  margin-bottom: 1.5rem;
+}
+
+.section hr {
+  color: #a3a3a3;
+  opacity: 0.6;
+  width: 100%;
+}
