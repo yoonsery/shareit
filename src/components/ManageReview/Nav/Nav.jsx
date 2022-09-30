@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import styles from './Nav.module.css';
 
-const Nav = ({ available, written }) => {
+const Nav = ({ available, written, onClick }) => {
   const availableList = useSelector((state) => state.availableList);
   const writtenList = useSelector((state) => state.writtenList);
 
@@ -13,13 +13,20 @@ const Nav = ({ available, written }) => {
     ? `${styles.list} ${styles.written} ${styles.active}`
     : `${styles.list} ${styles.written}`;
 
+  const onClickHandler = (e) => {
+    e.preventDefault();
+    onClick();
+  };
+
   return (
     <nav className={styles.nav}>
       <ul className={styles.ul}>
-        <li className={availableStyles}>
+        <li onClick={onClickHandler} className={availableStyles}>
           작성가능 후기 ({availableList.length})
         </li>
-        <li className={writtenStyles}>작성한 후기 ({writtenList.length})</li>
+        <li onClick={onClickHandler} className={writtenStyles}>
+          작성한 후기 ({writtenList.length})
+        </li>
       </ul>
     </nav>
   );
