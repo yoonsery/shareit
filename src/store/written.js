@@ -50,7 +50,7 @@ const writtenSlice = createSlice({
   initialState: initialWritten,
   reducers: {
     getLoadingState(state) {
-      return console.log(state);
+      console.log(state);
     },
   },
 });

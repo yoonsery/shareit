@@ -1,21 +1,25 @@
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { typeActions } from '../../../store/review-type';
 import styles from './Nav.module.css';
 
-const Nav = ({ available, written, onClick }) => {
+const Nav = () => {
+  const dispatch = useDispatch();
+  const isAvailable = useSelector((state) => state.reviewType.isAvailable);
+  const isWritten = useSelector((state) => state.reviewType.isWritten);
   const availableList = useSelector((state) => state.availableList);
   const writtenList = useSelector((state) => state.writtenList);
 
-  let availableStyles = available
+  let availableStyles = isAvailable
     ? `${styles.list} ${styles.available} ${styles.active}`
     : `${styles.list} ${styles.available}`;
 
-  let writtenStyles = written
+  let writtenStyles = isWritten
     ? `${styles.list} ${styles.written} ${styles.active}`
     : `${styles.list} ${styles.written}`;
 
   const onClickHandler = (e) => {
     e.preventDefault();
-    onClick();
+    dispatch(typeActions.toggle());
   };
 
   return (
