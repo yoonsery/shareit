@@ -1,10 +1,9 @@
 import { useSelector } from 'react-redux';
-import Available from '../available/Available';
-import Written from '../written/Written';
 import Nav from '../nav/Nav';
 import ReviewFooter from '../reviewFooter/ReviewFooter';
 
 import styles from './ManageReview.module.css';
+import InfiniteReviews from '../infiniteReviews/InfiniteReviews';
 
 const ManageReview = () => {
   const isAvailable = useSelector((state) => state.reviewType.isAvailable);
@@ -17,8 +16,7 @@ const ManageReview = () => {
         <div className={styles.line} />
         <div className={isAvailable ? `${styles.left}` : `${styles.right}`} />
       </header>
-      {isAvailable && <Available />}
-      {isWritten && <Written />}
+      <InfiniteReviews isAvailable={isAvailable} isWritten={isWritten} />
       <ReviewFooter />
     </main>
   );
