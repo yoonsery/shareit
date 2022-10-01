@@ -1,5 +1,5 @@
-import styles from './Footer.module.css';
-const Footer = () => {
+import styles from './ReviewFooter.module.css';
+const ReviewFooter = () => {
   return (
     <footer className={styles.footer}>
       <p className={styles.recommend}>
@@ -29,4 +29,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default ReviewFooter;

@@ -1,6 +1,6 @@
 import { useSelector } from 'react-redux';
-import Thumbnail from '../Thumbnail/Thumbnail';
-import Detail from '../Detail/Detail';
+import Thumbnail from '../thumbnail/Thumbnail';
+import Detail from '../detail/Detail';
 import styles from './Written.module.css';
 
 const Written = () => {

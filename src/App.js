@@ -1,4 +1,4 @@
-import ManageReview from './components/ManageReview/ManageReview';
+import ManageReview from './components/manageReview/ManageReview';
 
 import './App.css';
 

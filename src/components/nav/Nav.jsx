@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux';
-import { typeActions } from '../../../store/review-type';
+import { typeActions } from '../../store/review-type';
 import styles from './Nav.module.css';
 
 const Nav = () => {
