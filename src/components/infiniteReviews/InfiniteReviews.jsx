@@ -6,30 +6,70 @@ import Available from '../available/Available';
 import Written from '../written/Written';
 
 const InfiniteReviews = ({ isAvailable, isWritten }) => {
-  const dispatch = useDispatch();
-  const [scrollOption, setScrollOption] = useState({
-    reviewLength: 3,
-  });
-
   const availableReviewList = useSelector((state) => state.availableList);
   const writtenReviewList = useSelector((state) => state.writtenList);
+  const dispatch = useDispatch();
+
+  const [availCount, setAvailCount] = useState(5);
+  const [writtenCount, setWrittenCount] = useState(5);
+  // const [reviewCount, setReviewCount] = useState({
+  //   availCount: 5,
+  //   writtenCount: 5,
+  // });
+  const [loadingCount, setLoadingCount] = useState(5);
 
   const infiniteScrollHandler = useCallback(() => {
-    !isAvailable && dispatch(availableActions.getNewList(0));
-    isAvailable &&
-      dispatch(availableActions.getNewList(scrollOption.reviewLength));
+    if (isAvailable) {
+      dispatch(writtenActions.getMoreList(0));
+      dispatch(availableActions.getMoreList(availCount));
+    }
 
-    !isWritten && dispatch(writtenActions.getNewList(0));
-    isWritten && dispatch(writtenActions.getNewList(scrollOption.reviewLength));
-  }, [isAvailable, isWritten, dispatch, scrollOption.reviewLength]);
+    if (isWritten) {
+      dispatch(availableActions.getMoreList(0));
+      dispatch(writtenActions.getMoreList(writtenCount));
+    }
+  }, [isAvailable, isWritten, dispatch, availCount, writtenCount]);
 
   useEffect(() => {
     infiniteScrollHandler();
+    window.addEventListener('dblclick', () => {
+      // if (availCount > availableReviewList.length) {
+      //   setAvailCount(availableReviewList.length);
+      //   return;
+      // }
+
+      availCount >= availableReviewList.length &&
+        setAvailCount(availableReviewList.length);
+
+      writtenCount >= writtenReviewList.length &&
+        setWrittenCount(writtenReviewList.length);
+
+      if (isAvailable) {
+        setAvailCount(availCount + loadingCount);
+        setWrittenCount(5);
+      }
+
+      if (isWritten) {
+        setWrittenCount(writtenCount + loadingCount);
+        setAvailCount(5);
+      }
+
+      // console.log(availCount, writtenCount);
+      console.count(availCount, writtenCount);
+      console.count();
+      return () => {
+        console.count();
+      };
+    });
   }, [
     isAvailable,
     isWritten,
     infiniteScrollHandler,
-    scrollOption.reviewLength,
+    availCount,
+    writtenCount,
+    loadingCount,
+    availableReviewList.length,
+    writtenReviewList.length,
   ]);
 
   return (

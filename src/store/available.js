@@ -1,13 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit';
 import availableData from '../db/availableData.json';
 
-const initialState = availableData.map((item) => item);
+const initialState = availableData;
 
 const availableSlice = createSlice({
   name: 'availableList',
   initialState,
   reducers: {
-    getNewList: (state, action) => {
+    getMoreList: (state, action) => {
       return initialState.slice(0, action.payload);
     },
   },
