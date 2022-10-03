@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import styles from './Thumbnail.module.css';
+import styles from './ReviewThumbnail.module.css';
 
-const Thumbnail = ({ props: item }) => {
+const ReviewThumbnail = ({ props: item }) => {
   const forWirtten = useSelector((state) => state.reviewType.isWritten);
 
   return (
@@ -27,4 +27,4 @@ const Thumbnail = ({ props: item }) => {
   );
 };
 
-export default Thumbnail;
+export default ReviewThumbnail;

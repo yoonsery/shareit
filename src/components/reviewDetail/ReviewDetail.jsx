@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import styles from './Detail.module.css';
+import styles from './ReviewDetail.module.css';
 
-const Detail = ({ props: item }) => {
+const ReviewDetail = ({ props: item }) => {
   const forWirtten = useSelector((state) => state.reviewType.isWritten);
 
   let detailStyle = forWirtten
@@ -31,4 +31,4 @@ const Detail = ({ props: item }) => {
   );
 };
 
-export default Detail;
+export default ReviewDetail;

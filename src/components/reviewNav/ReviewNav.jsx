@@ -1,8 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { typeActions } from '../../store/review-type';
-import styles from './Nav.module.css';
+import styles from './ReviewNav.module.css';
 
-const Nav = () => {
+const ReviewNav = () => {
   const dispatch = useDispatch();
   const isAvailable = useSelector((state) => state.reviewType.isAvailable);
   const isWritten = useSelector((state) => state.reviewType.isWritten);
@@ -36,4 +36,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default ReviewNav;
