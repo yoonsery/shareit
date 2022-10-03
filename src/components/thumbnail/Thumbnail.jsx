@@ -1,14 +1,25 @@
+import { useSelector } from 'react-redux';
 import styles from './Thumbnail.module.css';
 
 const Thumbnail = ({ props: item }) => {
+  const forWirtten = useSelector((state) => state.reviewType.isWritten);
+
   return (
-    <div className={styles.thumbnail}>
+    <div
+      className={
+        forWirtten ? `${styles.written_thumbnail}` : `${styles.avail_thumbnail}`
+      }
+    >
       <img
         className={styles.image}
         alt="hostImage"
         src={item.product.hostImage}
       />
-      <div className={styles.title}>
+      <div
+        className={
+          forWirtten ? `${styles.written_title}` : `${styles.avail_title}`
+        }
+      >
         <h4 className={styles.host_name}>{item.product.hostName}</h4>
         <h3 className={styles.space_name}>{item.product.spaceName}</h3>
       </div>

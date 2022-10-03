@@ -1,6 +1,13 @@
+import { useSelector } from 'react-redux';
 import styles from './Detail.module.css';
 
 const Detail = ({ props: item }) => {
+  const forWirtten = useSelector((state) => state.reviewType.isWritten);
+
+  let textColor = forWirtten
+    ? `${styles.description_detail} ${styles.written}`
+    : `${styles.description_detail} ${styles.avail}`;
+
   return (
     <div className={styles.description}>
       <ul className={styles.description_title}>
@@ -9,7 +16,7 @@ const Detail = ({ props: item }) => {
         {item.review.deadLine && <li> 작성기한 </li>}
         {item.review.createAt && <li> 작성일자 </li>}
       </ul>
-      <ul className={styles.description_detail}>
+      <ul className={textColor}>
         <li>
           {item.product.productType && (
             <span className={styles.live}>실시간</span>

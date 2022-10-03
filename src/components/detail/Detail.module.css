@@ -16,13 +16,22 @@
   padding-bottom: 8px;
 }
 
-.description_detail {
+.description_detail.avail {
   margin: 15px 0 0 18px;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 17px;
   color: #5e5e5e;
+}
+
+.description_detail.written {
+  margin: 15px 0 0 18px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 17px;
+  color: #878787;
 }
 
 .description_detail li {
