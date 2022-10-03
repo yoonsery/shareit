@@ -4,8 +4,8 @@ import styles from './Detail.module.css';
 const Detail = ({ props: item }) => {
   const forWirtten = useSelector((state) => state.reviewType.isWritten);
 
-  let textColor = forWirtten
-    ? `${styles.description_detail} ${styles.written}`
+  let detailStyle = forWirtten
+    ? `${styles.description_detail} ${styles.written} ${styles.writtenUl}`
     : `${styles.description_detail} ${styles.avail}`;
 
   return (
@@ -16,7 +16,7 @@ const Detail = ({ props: item }) => {
         {item.review.deadLine && <li> 작성기한 </li>}
         {item.review.createAt && <li> 작성일자 </li>}
       </ul>
-      <ul className={textColor}>
+      <ul className={detailStyle}>
         <li>
           {item.product.productType && (
             <span className={styles.live}>실시간</span>

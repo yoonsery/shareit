@@ -34,6 +34,10 @@
   color: #878787;
 }
 
+.written.writtenUl {
+  margin-bottom: 13px;
+}
+
 .description_detail li {
   padding-bottom: 8px;
 }
