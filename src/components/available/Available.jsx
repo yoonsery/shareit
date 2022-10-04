@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { availableActions } from '../../store/available';
 import ReviewThumbnail from '../reviewThumbnail/ReviewThumbnail';
@@ -81,7 +82,9 @@ const Available = () => {
             <div className={styles.line} />
             <ReviewDetail props={item} />
             <button type="button" className={styles.button}>
-              후기 쓰기
+              <NavLink className={styles.link} to="/form">
+                후기 쓰기
+              </NavLink>
             </button>
           </section>
         ))}

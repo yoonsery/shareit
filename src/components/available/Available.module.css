@@ -25,5 +25,11 @@
   font-size: 14px;
   line-height: 20px;
   text-align: center;
+  cursor: default;
+}
+
+.link {
+  color: inherit;
+  text-decoration: inherit;
   cursor: pointer;
 }
