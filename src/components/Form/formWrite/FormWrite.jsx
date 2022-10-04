@@ -3,7 +3,7 @@ import FormMessage from '../formMessage/FormMessage';
 import FormReview from '../formReview/FormReview';
 import FormRating from '../formRating/FormRating';
 import styles from './FormWrite.module.css';
-import FormAgree from '../form/formAgree/FormAgree';
+import FormAgree from '../formAgree/FormAgree';
 
 const FormWrite = () => {
   return (

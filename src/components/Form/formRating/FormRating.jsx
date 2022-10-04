@@ -1,5 +1,4 @@
-// import { StarIcon } from '@heroicons/react/20/solid';
-import FormSectionTitle from '../form/formSectionTitle/FormSectionTitle';
+import FormSectionTitle from '../formSectionTitle/FormSectionTitle';
 import { useState } from 'react';
 import styles from './FormRating.module.css';
 

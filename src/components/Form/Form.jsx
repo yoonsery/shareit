@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
-import FormDetail from '../formDetail/FormDetail';
-import FormFooter from '../formFooter/FormFooter';
-import FormThumbnail from '../formThumbnail/FormThumbnail';
-import FormWrite from '../formWrite/FormWrite';
+import FormDetail from './formDetail/FormDetail';
+import FormFooter from './formFooter/FormFooter';
+import FormThumbnail from './formThumbnail/FormThumbnail';
+import FormWrite from './formWrite/FormWrite';
 
 import styles from './Form.module.css';
 
