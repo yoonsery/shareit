@@ -1,15 +1,17 @@
 .nav {
   margin: 0;
+  height: 50px;
   color: #d8dee5;
 }
 
 .ul {
   display: flex;
-  padding: 0;
-  margin: 3px 0;
-  flex-direction: row;
+  padding: 13px 0;
+  margin: auto;
   font-size: small;
+  flex-direction: row;
   justify-content: space-around;
+  align-items: center;
 }
 
 .list {
