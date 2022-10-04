@@ -1,8 +1,8 @@
 import { useSelector } from 'react-redux';
 import ReviewThumbnail from '../reviewThumbnail/ReviewThumbnail';
 import ReviewDetail from '../reviewDetail/ReviewDetail';
+import ReviewSection from '../reviewSection/ReviewSection';
 import styles from './Written.module.css';
-import Review from '../review/Review';
 
 const Written = () => {
   const writtenList = useSelector((state) => state.writtenList);
@@ -12,7 +12,7 @@ const Written = () => {
       <div className={styles.line} />
       <ReviewDetail props={item} />
       <div className={styles.line} />
-      <Review props={item} />
+      <ReviewSection props={item} />
     </section>
   ));
 };

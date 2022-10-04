@@ -1,5 +1,15 @@
+import FormSectionTitle from '../form/formSectionTitle/FormSectionTitle';
+import FormTextArea from '../formTextArea/FormTextArea';
+
+const title = '사용후기를 작성해 주세요 (6자 이상)';
+
 const FormReview = () => {
-  return <div>사용후기를 작성해 주세요 (6자 이상) *</div>;
+  return (
+    <section>
+      <FormSectionTitle title={title} />
+      <FormTextArea />
+    </section>
+  );
 };
 
 export default FormReview;

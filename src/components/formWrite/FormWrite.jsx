@@ -1,13 +1,14 @@
 import FormAddImage from '../formAddImage/FormAddImage';
 import FormMessage from '../formMessage/FormMessage';
 import FormReview from '../formReview/FormReview';
-import FormStar from '../formStar/FormStar';
+import FormRating from '../formRating/FormRating';
 import styles from './FormWrite.module.css';
+import FormAgree from '../form/formAgree/FormAgree';
 
 const FormWrite = () => {
   return (
-    <>
-      <FormStar />
+    <section className={styles.container}>
+      <FormRating />
       <div className={styles.line} />
       <FormReview />
       <div className={styles.line} />
@@ -15,15 +16,8 @@ const FormWrite = () => {
       <div className={styles.line} />
       <FormMessage />
       <div className={styles.line} />
-      <div className={styles.agree}>
-        <button className={styles.agreeCheck} type="check" />
-        <span>구매후기 약관 동의 (필수)</span>
-        <button>
-          {/* > 아이콘 가져오기 */}
-          {/* --- */}
-        </button>
-      </div>
-    </>
+      <FormAgree />
+    </section>
   );
 };
 

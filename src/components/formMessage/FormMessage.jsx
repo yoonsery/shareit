@@ -1,12 +1,14 @@
+import FormSectionTitle from '../form/formSectionTitle/FormSectionTitle';
+import FormReview, { TextArea } from '../formReview/FormReview';
+import FormTextArea from '../formTextArea/FormTextArea';
 import styles from './FormMessage.module.css';
 
 const FormMessage = () => {
+  const title = '판매자에게 전달하고 싶은 메시지';
   return (
     <>
-      <div>판매자에게 전달하고 싶은 메시지</div>
-      <textarea placeholder="서비스 이용과 무관하거나 저작권 침해, 욕설, 광고, 음란, 불법적인 후기는 통보 없이 삭제 및 적립 혜택이 회수 될 수 있습니다."></textarea>
-      {/* 글자수 카운트 */}
-      <span>0/1000</span>
+      <FormSectionTitle title={title} />
+      <FormTextArea />
     </>
   );
 };

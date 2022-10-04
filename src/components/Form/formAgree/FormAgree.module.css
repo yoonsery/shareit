@@ -1,0 +1,32 @@
+.agree {
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+
+.checkBox {
+  /* appearance: none; */
+  /* opacity: 0; */
+
+  margin: 16px 0 16px 20px;
+  cursor: pointer;
+}
+
+.checkBox::before {
+  display: block;
+  content: '';
+  width: 18px;
+  height: 18px;
+  /* border: 1px solid #d8dee5; */
+  border: 1px solid red;
+  /* background: red; */
+  border-radius: 4px;
+}
+
+.agreeText {
+  margin: 0;
+}
+
+.button {
+}
