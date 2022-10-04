@@ -1,11 +1,11 @@
 import React, { useCallback, useEffect, useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { availableActions } from '../../store/available';
+import { availableActions } from '../../../store/available';
 import ReviewThumbnail from '../reviewThumbnail/ReviewThumbnail';
 import ReviewDetail from '../reviewDetail/ReviewDetail';
 import styles from './Available.module.css';
-import { lengthActions } from '../../store/length';
+import { lengthActions } from '../../../store/length';
 // import useIntersect from '../infiniteReviews/useIntersect';
 
 const Available = () => {
