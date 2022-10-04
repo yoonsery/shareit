@@ -1,7 +1,7 @@
 .footer {
   width: 390px;
   background: #f4f5f6;
-  padding: 24px 18px 0;
+  padding: 18px 18px 0;
 }
 
 .attention {
@@ -15,12 +15,12 @@
 
 ul {
   margin-top: 25px;
-  margin-bottom: 50px;
+  margin-bottom: 52px;
 }
 
 li {
   font-style: normal;
-  padding-bottom: 14px;
+  padding-bottom: 10px;
   font-weight: 400;
   font-size: 14px;
   line-height: 20px;
