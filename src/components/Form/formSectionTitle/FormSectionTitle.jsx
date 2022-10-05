@@ -1,8 +1,8 @@
 import styles from './FormSectionTitle.module.css';
 
-const FormSectionTitle = ({ title }) => {
+const FormSectionTitle = ({ title, addimg }) => {
   return (
-    <div className={styles.title}>
+    <div className={addimg ? `${styles.addimg}` : `${styles.title}`}>
       {title}
       <span>*</span>
     </div>
