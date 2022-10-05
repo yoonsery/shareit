@@ -18,6 +18,10 @@ button {
   align-items: center;
 }
 
+.customerMenu button {
+  background: transparent;
+}
+
 .reviewTitle {
   margin: 10px 18px;
   font-style: normal;

@@ -13,12 +13,12 @@
   color: #232323;
 }
 
-ul {
+.footer ul {
   margin-top: 25px;
   margin-bottom: 52px;
 }
 
-li {
+.footer li {
   font-style: normal;
   padding-bottom: 10px;
   font-weight: 400;
