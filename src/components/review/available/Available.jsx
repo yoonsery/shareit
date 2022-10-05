@@ -82,7 +82,11 @@ const Available = () => {
             <div className={styles.line} />
             <ReviewDetail props={item} />
             <button type="button" className={styles.button}>
-              <NavLink className={styles.link} to="/form">
+              <NavLink
+                className={styles.link}
+                to={{ pathname: '/form' }}
+                state={{ item: item }}
+              >
                 후기 쓰기
               </NavLink>
             </button>
