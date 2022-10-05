@@ -1,13 +1,14 @@
-import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { Navigate, useLocation } from 'react-router-dom';
 import FormCard from './formCard/FormCard';
 import FormWrite from './formWrite/FormWrite';
 import FormFooter from './formFooter/FormFooter';
 import styles from './Form.module.css';
-import { useEffect, useState } from 'react';
 
 const Form = () => {
   const location = useLocation();
+
+  if (!location.state) return <Navigate replace to="/" />;
+
   const { item } = location.state;
 
   return (
