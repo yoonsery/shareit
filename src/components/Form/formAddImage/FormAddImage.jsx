@@ -41,10 +41,10 @@ const DeleteIcon = () => (
 const FormAddImage = () => {
   const [showImages, setShowImages] = useState([]);
   const inputRef = useRef();
+  let imageUrlLists = [...showImages];
 
   const addHandler = (event) => {
     const imageLists = event.target.files;
-    let imageUrlLists = [...showImages];
 
     for (let i = 0; i < imageLists.length; i++) {
       const currentImageUrl = URL.createObjectURL(imageLists[i]);
@@ -54,12 +54,16 @@ const FormAddImage = () => {
     if (imageUrlLists.length > 5) {
       imageUrlLists = imageUrlLists.slice(0, 5);
     }
-
     setShowImages(imageUrlLists);
   };
 
   useEffect(() => {
-    return () => URL.revokeObjectURL();
+    // To prevent memory leak
+    return () => {
+      imageUrlLists.forEach((el) => {
+        URL.revokeObjectURL(el);
+      });
+    };
   }, []);
 
   const deleteHandler = (id) => {
