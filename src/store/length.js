@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialType = {
-  length: 3,
+  length: 5,
 };
 
 const lengthSlice = createSlice({
