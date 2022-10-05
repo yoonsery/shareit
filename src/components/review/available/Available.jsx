@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { NavLink } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { availableActions } from '../../../store/available';
@@ -9,10 +9,10 @@ import styles from './Available.module.css';
 
 const Available = () => {
   const availList = useSelector((state) => state.availableList);
-  const length = useSelector((state) => state.length.length);
+  const length = useSelector((state) => state.length.availLength);
   const dispatch = useDispatch();
 
-  const [originLength, setOriginLength] = useState(availList.length);
+  const originLength = useState(availList.length)[0];
   const [bottom, setBottom] = useState(null);
   const bottomObserver = useRef(null);
 
@@ -25,8 +25,8 @@ const Available = () => {
               return;
             }
 
+            dispatch(lengthActions.get5MoreAvail());
             dispatch(availableActions.getMoreList(length));
-            dispatch(lengthActions.get5More());
           }
         });
       },
@@ -36,9 +36,9 @@ const Available = () => {
   }, [originLength, length, dispatch]);
 
   useEffect(() => {
+    dispatch(lengthActions.get5MoreAvail());
     dispatch(availableActions.getMoreList(length));
-    dispatch(lengthActions.get5More());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     const observer = bottomObserver.current;

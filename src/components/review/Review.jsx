@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
-import ReviewFooter from './reviewFooter/ReviewFooter';
+import ReviewHeader from './reviewHeader/ReviewHeader';
 import Available from './available/Available';
 import Written from './written/Written';
-import ReviewHeader from './reviewHeader/ReviewHeader';
-// import InfiniteReviews from '../infiniteReviews/InfiniteReviews';
+import ReviewFooter from './reviewFooter/ReviewFooter';
+
 import styles from './Review.module.css';
 
 const Review = () => {
@@ -13,10 +13,8 @@ const Review = () => {
   return (
     <main className={styles.main}>
       <ReviewHeader />
-      {/* <Available isAvailable={isAvailable} /> */}
       {isAvailable && <Available />}
       {isWritten && <Written />}
-      {/* <InfiniteReviews isAvailable={isAvailable} isWritten={isWritten} /> */}
       <ReviewFooter />
     </main>
   );
