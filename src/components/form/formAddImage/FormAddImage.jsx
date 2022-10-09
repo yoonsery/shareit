@@ -53,6 +53,7 @@ const FormAddImage = () => {
         alert('15MB 이하의 사진을 첨부해 주세요');
         return;
       }
+
       imageUrlLists.push(currentImageUrl);
     }
 
