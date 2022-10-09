@@ -48,12 +48,18 @@ const FormAddImage = () => {
 
     for (let i = 0; i < imageLists.length; i++) {
       const currentImageUrl = URL.createObjectURL(imageLists[i]);
+
+      if (imageLists[0].size > 15 * 1024 * 1024) {
+        alert('15MB 이하의 사진을 첨부해 주세요');
+        return;
+      }
       imageUrlLists.push(currentImageUrl);
     }
 
     if (imageUrlLists.length > 5) {
       imageUrlLists = imageUrlLists.slice(0, 5);
     }
+
     setShowImages(imageUrlLists);
   };
 
