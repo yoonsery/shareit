@@ -1,0 +1,31 @@
+.textArea {
+  width: 354px;
+  height: 113px;
+  margin: 2px 18px 0;
+  padding: 12px 14px;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  background: #ffffff;
+  border: 1px solid #d8dee5;
+  border-radius: 4px;
+  resize: none;
+}
+
+.textArea::placeholder {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 22px;
+  color: #bec2c8;
+}
+
+.letterCount {
+  padding: 0 18px 40px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-align: right;
+  color: #aeaeae;
+}

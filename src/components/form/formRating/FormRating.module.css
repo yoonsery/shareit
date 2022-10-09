@@ -1,0 +1,25 @@
+.section {
+  padding-bottom: 70px;
+}
+
+.choose {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #878787;
+  text-align: center;
+}
+
+.starContainer {
+  display: flex;
+  margin-top: 12px;
+  justify-content: center;
+  text-align: center;
+}
+
+.starContainer button {
+  margin: 0 2px;
+  background: transparent;
+  cursor: pointer;
+}

@@ -1,0 +1,34 @@
+.thumbnail {
+  display: flex;
+  align-items: center;
+  margin: 20px 18px 18px 18px;
+  text-align: left;
+}
+
+.image {
+  margin: 0;
+  width: 80px;
+  height: 59.94px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.title {
+  margin: 0 18px;
+}
+
+.host_name {
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  color: #878787;
+}
+
+.space_name {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 23px;
+  color: #878787;
+}

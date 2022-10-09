@@ -1,0 +1,10 @@
+.line {
+  width: 100%;
+  height: 1px;
+  background: #ebeff7;
+}
+
+.container {
+  width: 390px;
+  background: #fff;
+}
