@@ -1,6 +1,9 @@
+import { useNavigate } from 'react-router-dom';
 import styles from './FormFooter.module.css';
 
 const FormFooter = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <section className={styles.footer}>
@@ -24,9 +27,16 @@ const FormFooter = () => {
         </ul>
       </section>
       <div className={styles.buttons}>
-        <button type="button" className={styles.cancel}>
+        <button
+          type="button"
+          className={styles.cancel}
+          onClick={() => {
+            navigate(0);
+          }}
+        >
           취소
         </button>
+
         <button type="submit" className={styles.save}>
           저장
         </button>
