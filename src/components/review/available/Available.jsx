@@ -1,61 +1,64 @@
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState, useRef, useCallback } from 'react';
 import { NavLink } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { availableActions } from '../../../store/available';
+import { useDispatch } from 'react-redux';
 import { lengthActions } from '../../../store/length';
 import ReviewThumbnail from '../reviewThumbnail/ReviewThumbnail';
 import ReviewDetail from '../reviewDetail/ReviewDetail';
+import availableData from '../../../db/availableData.json';
 import styles from './Available.module.css';
 
 const Available = () => {
-  const availList = useSelector((state) => state.availableList);
-  const length = useSelector((state) => state.length.availLength);
   const dispatch = useDispatch();
+  const [list, setList] = useState(availableData.slice(0, 5));
+  const [itemLength, setItemLength] = useState(5);
+  const originLength = useState(availableData.length)[0];
+  const bottomRef = useRef(null);
 
-  const originLength = useState(availList.length)[0];
-  const [bottom, setBottom] = useState(null);
-  const bottomObserver = useRef(null);
+  const scrollCallback = useCallback(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (itemLength > originLength) return;
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(async (entry) => {
-          if (entry.isIntersecting) {
-            if (length > originLength) {
-              return;
-            }
-
-            dispatch(lengthActions.get5MoreAvail());
-            dispatch(availableActions.getMoreList(length));
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-    bottomObserver.current = observer;
-  }, [originLength, length, dispatch]);
+          setItemLength((prev) => prev + 5);
+          setList((prev) =>
+            list.concat(availableData.slice(itemLength, itemLength + 5))
+          );
+        }
+      });
+    },
+    [itemLength, list, originLength]
+  );
 
   useEffect(() => {
-    dispatch(lengthActions.get5MoreAvail());
-    dispatch(availableActions.getMoreList(length));
-  }, [dispatch]);
+    const observer = new IntersectionObserver(scrollCallback, {
+      threshold: 0.25,
+    });
 
-  useEffect(() => {
-    const observer = bottomObserver.current;
-    if (bottom) {
-      observer.observe(bottom);
+    if (itemLength > originLength) {
+      dispatch(lengthActions.updateAvailLength(originLength));
+    } else {
+      dispatch(lengthActions.updateAvailLength(itemLength));
     }
+
+    const { current } = bottomRef;
+    observer.observe(current);
+
     return () => {
-      if (bottom) {
-        observer.unobserve(bottom);
-      }
+      observer.unobserve(current);
     };
-  }, [bottom]);
+  }, [originLength, itemLength, list, scrollCallback, dispatch]);
+
+  useEffect(() => {
+    setList(availableData.slice(0, 5));
+    setItemLength(5);
+    dispatch(lengthActions.updateAvailLength(itemLength));
+  }, []);
 
   return (
     <>
-      {availList &&
-        availList.map((item) => (
+      {list &&
+        list.map((item) => (
           <section className={styles.section} key={item.seq}>
             <ReviewThumbnail props={item} />
             <div className={styles.line} />
@@ -71,7 +74,7 @@ const Available = () => {
             </button>
           </section>
         ))}
-      <div ref={setBottom}></div>
+      <div ref={bottomRef}></div>
     </>
   );
 };

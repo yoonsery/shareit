@@ -1,19 +1,19 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialType = {
-  availLength: 5,
-  writtenLength: 5,
+  availLength: 0,
+  writtenLength: 0,
 };
 
 const lengthSlice = createSlice({
   name: 'length',
   initialState: initialType,
   reducers: {
-    get5MoreAvail(state) {
-      state.availLength = state.availLength + 5;
+    updateAvailLength(state, action) {
+      state.availLength = action.payload;
     },
-    get5MoreWritten(state) {
-      state.writtenLength = state.writtenLength + 5;
+    updateWrittenLength(state, action) {
+      state.writtenLength = action.payload;
     },
   },
 });

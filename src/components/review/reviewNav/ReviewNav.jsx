@@ -6,8 +6,8 @@ const ReviewNav = () => {
   const dispatch = useDispatch();
   const isAvailable = useSelector((state) => state.reviewType.isAvailable);
   const isWritten = useSelector((state) => state.reviewType.isWritten);
-  const availableList = useSelector((state) => state.availableList);
-  const writtenList = useSelector((state) => state.writtenList);
+  const availLength = useSelector((state) => state.length.availLength);
+  const writtenLength = useSelector((state) => state.length.writtenLength);
 
   let availableStyles = isAvailable
     ? `${styles.list} ${styles.available} ${styles.active}`
@@ -26,10 +26,10 @@ const ReviewNav = () => {
     <nav className={styles.nav}>
       <ul className={styles.ul}>
         <li onClick={onClickHandler} className={availableStyles}>
-          작성가능 후기 ({availableList.length})
+          작성가능 후기 ({availLength})
         </li>
         <li onClick={onClickHandler} className={writtenStyles}>
-          작성한 후기 ({writtenList.length})
+          작성한 후기 ({writtenLength})
         </li>
       </ul>
     </nav>
