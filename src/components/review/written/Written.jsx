@@ -1,61 +1,65 @@
-import { useEffect, useState, useRef } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { writtenActions } from '../../../store/written';
+import { useEffect, useState, useRef, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import { lengthActions } from '../../../store/length';
 import ReviewThumbnail from '../reviewThumbnail/ReviewThumbnail';
 import ReviewDetail from '../reviewDetail/ReviewDetail';
 import ReviewSection from '../reviewSection/ReviewSection';
+import reviewData from '../../../db/reviewData.json';
 import styles from './Written.module.css';
 
 const Written = () => {
-  const writtenList = useSelector((state) => state.writtenList);
-  const length = useSelector((state) => state.length.writtenLength);
   const dispatch = useDispatch();
+  const [list, setList] = useState(reviewData.slice(0, 5));
+  const [itemLength, setItemLength] = useState(5);
+  const originLength = useState(reviewData.length)[0];
+  const bottomRef = useRef(null);
 
-  const [originLength, setOriginLength] = useState(writtenList.length);
-  const [bottom, setBottom] = useState(null);
-  const bottomObserver = useRef(null);
+  const scrollCallback = useCallback(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          if (itemLength > originLength) return;
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(async (entry) => {
-          if (entry.isIntersecting) {
-            if (length > originLength) {
-              return;
-            }
-
-            dispatch(lengthActions.get5MoreWritten());
-            dispatch(writtenActions.getMoreList(length));
-          }
-        });
-      },
-      { threshold: 0.25 }
-    );
-    bottomObserver.current = observer;
-  }, [originLength, length, dispatch]);
+          setItemLength((prev) => prev + 5);
+          setList((prev) =>
+            list.concat(reviewData.slice(itemLength, itemLength + 5))
+          );
+        }
+      });
+    },
+    [itemLength, list, originLength]
+  );
 
   useEffect(() => {
-    dispatch(lengthActions.get5MoreWritten());
-    dispatch(writtenActions.getMoreList(length));
-  }, []);
+    const observer = new IntersectionObserver(scrollCallback, {
+      threshold: null,
+    });
 
-  useEffect(() => {
-    const observer = bottomObserver.current;
-    if (bottom) {
-      observer.observe(bottom);
+    if (itemLength > originLength) {
+      dispatch(lengthActions.updateWrittenLength(originLength));
+    } else {
+      dispatch(lengthActions.updateWrittenLength(itemLength));
     }
+
+    const { current } = bottomRef;
+    observer.observe(current);
+
     return () => {
-      if (bottom) {
-        observer.unobserve(bottom);
-      }
+      observer.unobserve(current);
     };
-  }, [bottom]);
+  }, [originLength, itemLength, list, scrollCallback, dispatch]);
+
+  useEffect(() => {
+    setList(reviewData.slice(0, 5));
+    setItemLength(5);
+    dispatch(lengthActions.updateWrittenLength(itemLength));
+    dispatch(lengthActions.updateAvailLength(0));
+  }, []);
 
   return (
     <>
-      {writtenList &&
-        writtenList.map((item) => (
+      {list &&
+        list.map((item) => (
           <section className={styles.section} key={item.seq}>
             <ReviewThumbnail props={item} />
             <div className={styles.line} />
@@ -64,7 +68,7 @@ const Written = () => {
             <ReviewSection props={item} />
           </section>
         ))}
-      <div ref={setBottom}></div>
+      <div ref={bottomRef}></div>
     </>
   );
 };

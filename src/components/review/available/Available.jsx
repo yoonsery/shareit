@@ -32,7 +32,7 @@ const Available = () => {
 
   useEffect(() => {
     const observer = new IntersectionObserver(scrollCallback, {
-      threshold: 0.25,
+      threshold: null,
     });
 
     if (itemLength > originLength) {
@@ -53,6 +53,7 @@ const Available = () => {
     setList(availableData.slice(0, 5));
     setItemLength(5);
     dispatch(lengthActions.updateAvailLength(itemLength));
+    dispatch(lengthActions.updateWrittenLength(0));
   }, []);
 
   return (
